@@ -1,13 +1,23 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
+#include "casting.h"
+#include "../../02_module/01_expressions/expressions.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
 /*Test case operator precedence 1 with function argument values 12, 6 and 3 returns 14*/
+TEST_CASE("Test operator precedence 1")
+{
+	REQUIRE(operator_precedence_1(12, 6, 3) == 14);
+}
 
 /*Test case operator precedence 2 with function argument values 12, 6 and 3 returns 6*/
+TEST_CASE("Test operator precedence 2")
+{
+	REQUIRE(operator_precedence_2(12, 6, 3) == 6);
+}
 
 /*Test case operator precedence 3 with function argument values 12, 6 and 3 returns 6*/
 
@@ -17,6 +27,10 @@ TEST_CASE("Verify Test Configuration", "verification") {
 
 /*Test case convert double to int to show that a double converted to int truncates 
 the decimal portion*/
+TEST_CASE("Test double to int function")
+{
+	REQUIRE(convert_double_to_int(10.55) == 10);
+}
 
 /*Test case static cast double int to show that a double casted to int truncates
 decimal portion*/
