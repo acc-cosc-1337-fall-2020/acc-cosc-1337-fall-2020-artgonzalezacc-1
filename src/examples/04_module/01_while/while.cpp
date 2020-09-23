@@ -1,4 +1,5 @@
 #include "while.h"
+#include<iostream>
 //Using a while loop write code for sum_of_squares function that accepts an int and returns  
 //the sum of all the squares of that number from 1 to the number. 
 //Example: sum_of_squares(4) 
@@ -14,7 +15,9 @@ int sum_of_squares(int num)
 
         cnt++;
     }
-
+    std::cout<<"sum of squares num before "<<num<<"\n";
+    num = 10;
+    std::cout<<"sum of squares num after "<<num<<"\n";
     return sum;
 }
 
