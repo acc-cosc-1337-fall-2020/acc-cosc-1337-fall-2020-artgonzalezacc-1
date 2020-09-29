@@ -26,3 +26,12 @@ TEST_CASE("Test get area with default parameters")
 	REQUIRE(get_area(5) == 50);
 	REQUIRE(get_area(20, 20) == 400);
 }
+
+TEST_CASE("Test value and reference parameters")
+{
+	int num1 = 0, num2 = 0;
+
+	pass_by_val_and_ref(num1, num2);
+	REQUIRE(num1 == 0);
+	REQUIRE(num2 == 50);
+}
