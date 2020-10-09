@@ -8,12 +8,66 @@ TEST_CASE("Verify Test Configuration", "verification") {
 
 TEST_CASE("Test Bank account initial balance")
 {
+	BankAccount account(100);
+
+	REQUIRE(account.get_balance() == 100);
+}
+
+TEST_CASE("Test bank account deposit")
+{
+	BankAccount account(500);
+	REQUIRE(account.get_balance() == 500);
+
+	account.deposit(100);
+
+	REQUIRE(account.get_balance() == 600);
+
+}
+
+TEST_CASE("Test bank account deposit with negative amount")
+{
+	BankAccount account(500);
+	REQUIRE(account.get_balance() == 500);
+
+	account.deposit(-100);
+
+	REQUIRE(account.get_balance() == 500);
+
+}
+
+
+TEST_CASE("Test bank account withdraw")
+{
+	BankAccount account(500);
+	REQUIRE(account.get_balance() == 500);
+
+	account.deposit(100);
+	REQUIRE(account.get_balance() == 600);
+
+	account.withdraw(50);
+	REQUIRE(account.get_balance() == 550);
+}
+
+TEST_CASE("Test bank account withdraw with negative amount")
+{
+	BankAccount account(500);
+	REQUIRE(account.get_balance() == 500);
+
+	account.deposit(100);
+	REQUIRE(account.get_balance() == 600);
+
+	account.withdraw(-50);
+	REQUIRE(account.get_balance() == 600);
+}
+
+TEST_CASE("Test Bank account with default constructor")
+{
 	BankAccount account;
 
 	REQUIRE(account.get_balance() == 0);
 }
 
-TEST_CASE("Test bank account deposit")
+TEST_CASE("Test bank account deposit with default constructor")
 {
 	BankAccount account;
 	REQUIRE(account.get_balance() == 0);
