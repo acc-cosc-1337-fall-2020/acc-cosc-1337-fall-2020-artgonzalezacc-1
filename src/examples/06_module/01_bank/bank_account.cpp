@@ -4,14 +4,16 @@
 
 BankAccount::BankAccount(int b) : balance(b)
 {
-    //code for validating data    
+    //code for validating data
+    bank_balance += balance;    
 }
 
 void BankAccount::deposit(int amount)
-{
-    if(amount > 0)
+{   
+   if(amount > 0)
     {
         balance += amount;
+        bank_balance += amount;    
     }
 }
 
@@ -20,9 +22,13 @@ void BankAccount::withdraw(int amount)
     if(amount > 0 && balance >= amount)
     {
         balance -= amount;
+        bank_balance -= amount;    
     }
 }
 
+int BankAccount::bank_balance = 0;
+
+//FREE FUNCTIONS-DO NOT BELONG TO THE BANKACCOUNT CLASS
 void display_bank_account_data(BankAccount& b)
 {
     b.deposit(50);
