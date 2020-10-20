@@ -5,15 +5,55 @@
 #include<time.h>
 
 using std::cout;  using std::cin;
+enum transaction{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};//legacy C++
+enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};
 
 int main()
 {
 	srand(time(NULL));//generate a random number every time our program  runs
-	BankAccount account;
 
-	cout<<"balance "<<account.get_balance()<<"\n\n";
+	//BankAccount account(100), account1(500);
+	//BankAccount account2 = account + account1;
+	int choice;
+	char cont;
+	ATM atm;
 
-	BranchBank bank(100000);
+	do
+	{
+		atm.scan_card();
+		
+		cout<<"Enter 1, 2, or 3";
+		cin>>choice;
+
+		switch (static_cast<BANK_OPTIONS>(choice))
+		{
+		case BANK_OPTIONS::DEPOSIT:
+			cout<<"You selected deposit\n";
+			break;
+		case BANK_OPTIONS::WITHDRAW:
+			cout<<"You selected withdraw\n";
+			break;
+		case BANK_OPTIONS::DISPLAY:
+			atm.display_balance();
+			break;
+		default:
+			cout<<"Invalid choice\n";
+		}
+		cout<<"Enter y to continue: ";
+		cin>>cont;
+
+	}while(cont == 'y' || cont == 'Y');
+
+
+	
+	//cout<<account2;//this is calling the friend overload << function
+
+//	cin>>account;
+	
+//	cout<<account;
+	//cout<<"balance "<<account.get_balance()<<"\n\n";
+
+	/*BranchBank bank(100000);
 	bank.update_balance(500);
 	cout<<"Branch balance: "<<bank.get_branch_balance()<<"\n";
 	//initial will come from another class that retrieves balance from DB
@@ -23,18 +63,7 @@ int main()
 	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n";
 	display_balance(checking_account);
 
-	/*int choice;
-	ATM atm;
-
-	do
-	{
-		atm.scan_card();
-		atm.display_balance();
-		cout<<"Enter 1 to continue..";
-		cin>>choice;
-
-	}while(choice == 1);*/
-
+	int choice;
 	/*cout<<"Balance: "<<checking_account.get_balance()<<"\n\n";
 	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n\n";
 
