@@ -1,5 +1,7 @@
 #include "atm.h"
 #include "bank_account.h"
+#include "checking_account.h"
+#include "savings_account.h"
 #include<iostream>
 #include<stdlib.h>
 #include<time.h>
@@ -10,10 +12,19 @@ enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};
 
 int main()
 {
-	srand(time(NULL));//generate a random number every time our program  runs
+	CheckingAccount ca(1000);
+	cout<<ca.get_balance()<<"\n";
+		
+	SavingsAccount sa(500);
+	cout<<sa.get_balance()<<"\n";
+	/*srand(time(NULL));//generate a random number every time our program  runs
 
-	//BankAccount account(100), account1(500);
+	BankAccount account(100), account1(500);
 	//BankAccount account2 = account + account1;
+	cout<<account;
+	cin>>account;
+	cout<<"balance is "<<account;
+
 	int choice;
 	char cont;
 	ATM atm;
@@ -53,7 +64,7 @@ int main()
 //	cout<<account;
 	//cout<<"balance "<<account.get_balance()<<"\n\n";
 
-	/*BranchBank bank(100000);
+	BranchBank bank(100000);
 	bank.update_balance(500);
 	cout<<"Branch balance: "<<bank.get_branch_balance()<<"\n";
 	//initial will come from another class that retrieves balance from DB
@@ -64,7 +75,7 @@ int main()
 	display_balance(checking_account);
 
 	int choice;
-	/*cout<<"Balance: "<<checking_account.get_balance()<<"\n\n";
+	cout<<"Balance: "<<checking_account.get_balance()<<"\n\n";
 	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n\n";
 
 	BankAccount new_account;	

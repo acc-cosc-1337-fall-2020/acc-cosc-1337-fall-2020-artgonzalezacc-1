@@ -35,9 +35,13 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const BankAccount& a);
     friend std::istream& operator>>(std::istream& in, BankAccount& a);
     friend BankAccount operator+(const BankAccount& a1, const BankAccount& a2);
+
+protected:
+    int balance {0};//class member 
+    
 private://access specifier
-    int balance {0};//class member    
     static int bank_balance;
+    
 };//VERY IMPORTANT DON'T FORGET THE SEMICOLON!!!!!!!
 
 #endif//header guards
