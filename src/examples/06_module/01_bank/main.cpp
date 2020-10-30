@@ -46,14 +46,14 @@ int main()
 		
 	SavingsAccount sa(500);
 	cout<<sa.get_balance()<<"\n";
-	srand(time(NULL));//generate a random number every time our program  runs
+	
 
 	BankAccount account(100), account1(500);
 	//BankAccount account2 = account + account1;
 	cout<<account;
 	cin>>account;
 	cout<<"balance is "<<account;*/
-
+	srand(time(NULL));//generate a random number every time our program  runs
 	int choice;
 	char cont;
 	ATM atm;
