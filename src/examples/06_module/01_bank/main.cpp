@@ -3,27 +3,56 @@
 #include "checking_account.h"
 #include "savings_account.h"
 #include<iostream>
+#include<memory>
+#include<utility>
 #include<stdlib.h>
 #include<time.h>
+#include <vector>
 
-using std::cout;  using std::cin;
+using std::cout;  using std::cin; using std::vector; using std::unique_ptr;
 enum transaction{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};//legacy C++
 enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};
 
 int main()
 {
-	CheckingAccount ca(1000);
+/*	BankAccount a;
+	cout<<a.get_balance()<<"\n";
+	CheckingAccount c(500);
+	cout<<c.get_balance()<<"\n";
+
+	a = c;
+	cout<<a.get_balance()<<"\n\n";
+
+	std::unique_ptr<BankAccount> up_a(new BankAccount());
+	cout<<up_a->get_balance()<<"\n";
+	std::unique_ptr<CheckingAccount> up_c = std::make_unique<CheckingAccount>(500);
+	cout<<up_c->get_balance()<<"\n\n";
+
+//	up_a = std::move(up_c);
+//	cout<<up_a->get_balance()<<"\n\n";
+	
+	vector<unique_ptr<BankAccount>> accounts;//list
+	accounts.push_back(std::move(up_a));
+	accounts.push_back(std::move(up_c));
+
+	cout<<"Display vector: \n";
+	for(auto& account: accounts)
+	{
+		cout<<account->get_balance()<<"\n";
+	}*/
+
+	/*CheckingAccount ca(1000);
 	cout<<ca.get_balance()<<"\n";
 		
 	SavingsAccount sa(500);
 	cout<<sa.get_balance()<<"\n";
-	/*srand(time(NULL));//generate a random number every time our program  runs
+	srand(time(NULL));//generate a random number every time our program  runs
 
 	BankAccount account(100), account1(500);
 	//BankAccount account2 = account + account1;
 	cout<<account;
 	cin>>account;
-	cout<<"balance is "<<account;
+	cout<<"balance is "<<account;*/
 
 	int choice;
 	char cont;
@@ -56,7 +85,7 @@ int main()
 	}while(cont == 'y' || cont == 'Y');
 
 
-	
+	/*
 	//cout<<account2;//this is calling the friend overload << function
 
 //	cin>>account;
