@@ -15,17 +15,9 @@ enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};
 
 int main()
 {
-/*	BankAccount a;
-	cout<<a.get_balance()<<"\n";
-	CheckingAccount c(500);
-	cout<<c.get_balance()<<"\n";
-
-	a = c;
-	cout<<a.get_balance()<<"\n\n";
-
-	std::unique_ptr<BankAccount> up_a(new BankAccount());
+	/*std::unique_ptr<BankAccount> up_a(new SavingsAccount());
 	cout<<up_a->get_balance()<<"\n";
-	std::unique_ptr<CheckingAccount> up_c = std::make_unique<CheckingAccount>(500);
+	std::unique_ptr<BankAccount> up_c = std::make_unique<CheckingAccount>(500);
 	cout<<up_c->get_balance()<<"\n\n";
 
 //	up_a = std::move(up_c);

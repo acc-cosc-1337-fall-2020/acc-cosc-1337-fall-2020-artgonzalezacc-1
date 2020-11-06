@@ -7,8 +7,9 @@
 class SavingsAccount: public BankAccount
 {
 public:
+    SavingsAccount(){}
     SavingsAccount(int b) : BankAccount(b){}
-    int get_balance()const{return balance + 1;}//override base class function
+    int get_balance()const override{return balance + 1;}//override base class function
 };
 
 #endif
