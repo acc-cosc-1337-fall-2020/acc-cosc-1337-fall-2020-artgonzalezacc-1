@@ -1,6 +1,8 @@
 //cpp
 #include "tic_tac_toe.h"
 
+using std::cout; using std::cin;
+
 bool TicTacToe::game_over()
 {
     if (check_column_win() || check_row_win() ||
@@ -28,14 +30,6 @@ void TicTacToe::start_game(std::string first_player)
 {
     player = first_player; 
     clear_board();
-}
-
-void TicTacToe::display_board()const
-{
-    for(std::size_t i=0; i < pegs.size(); i += 3)
-    {
-        std::cout<<pegs[i]<<"|"<<pegs[i+1]<<"|"<<pegs[i+2]<<"\n";
-    }
 }
 
 void TicTacToe::set_next_player()
@@ -119,4 +113,38 @@ bool TicTacToe::check_diagonal_win()
 	}
 
 	return false;
+}
+
+std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
+{
+    out<<"Winner: "<<game.get_winner()<<"\n";
+    
+    for(std::size_t i=0; i < game.pegs.size(); i += 3)
+    {
+        out<<game.pegs[i]<<"|"<<game.pegs[i+1]<<"|"<<game.pegs[i+2]<<"\n";
+    }
+
+    out<<"\n";
+
+    return out;
+}
+
+std::istream& operator>>(std::istream& in, TicTacToe& game)
+{
+    int position;
+    cout<<"Enter position from 1 to 9: ";
+    in>>position;
+
+    while(!in.good() && (position < 1 || position > 9))
+    {
+        in.clear();
+        in.ignore(5, '\n');
+        
+        cout<<"Enter position from 1 to 9: ";
+        in>>position;
+    }
+
+    game.mark_board(position);
+
+    return in;
 }

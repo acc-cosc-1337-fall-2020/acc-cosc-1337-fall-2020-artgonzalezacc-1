@@ -37,7 +37,7 @@ TEST_CASE("Verify game ends when the board is full")
 TEST_CASE("Test win by first column", "X wins")
 {
 	TicTacToe board;
-	board.start_game("O");
+	board.start_game("X");
 	REQUIRE(board.game_over() == false);
 	board.mark_board(1);//X
 	REQUIRE(board.game_over() == false);
@@ -49,6 +49,7 @@ TEST_CASE("Test win by first column", "X wins")
 	REQUIRE(board.game_over() == false);
 	board.mark_board(7);//
 	REQUIRE(board.game_over() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 
 TEST_CASE("Test win by second column", "[X wins second column]")
