@@ -79,39 +79,16 @@ void TicTacToe::set_winner()
 
 bool TicTacToe::check_column_win()
 {
-    for (std::size_t i = 0; i < 3; i++) 
-	{
-		if (pegs[i] == pegs[i + 3] && pegs[i + 3] == pegs[i + 6]
-			&& pegs[i + 6] != " ")
-		{
-			return true;
-		}
-	}
-
 	return false;
 }
 
 bool TicTacToe::check_row_win()
 {
-    for (std::size_t i = 0; i < 9; i += 3) 
-	{
-		if(pegs[i] == pegs[i+1] && pegs [i+1] == pegs[i+2] && pegs[i] != " ")
-		{
-			return true;
-		}
-	}
-
 	return false;
 }
 
 bool TicTacToe::check_diagonal_win()
 {
-    if(pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[0] != " " ||
-	   pegs[2] == pegs[4] && pegs[4] == pegs[6] && pegs[2] != " ")
-	{
-		return true;
-	}
-
 	return false;
 }
 
@@ -119,28 +96,35 @@ std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
 {
     out<<"Winner: "<<game.get_winner()<<"\n";
     
-    for(std::size_t i=0; i < game.pegs.size(); i += 3)
-    {
-        out<<game.pegs[i]<<"|"<<game.pegs[i+1]<<"|"<<game.pegs[i+2]<<"\n";
-    }
+    for (std::size_t i = 0; i < game.pegs.size(); i += sqrt(game.pegs.size()))
+	{		
+		out << game.pegs[i] << "|" << game.pegs[i + 1] << "|" << game.pegs[i + 2];			
 
-    out<<"\n";
+		if (game.pegs.size() == 16)
+		{
+			out << "|" << game.pegs[i + 3];
+		}
+        
+        out << "\n";
+	}		
 
-    return out;
+    out << "\n";
+
+	return out;		
 }
 
 std::istream& operator>>(std::istream& in, TicTacToe& game)
 {
-    int position;
-    cout<<"Enter position from 1 to 9: ";
+    unsigned int position;
+    cout<<"Enter position from 1 to "<<game.pegs.size();
     in>>position;
 
-    while(!in.good() && (position < 1 || position > 9))
+    while(!in.good() || (position < 1 || position > game.pegs.size()))
     {
         in.clear();
         in.ignore(5, '\n');
         
-        cout<<"Enter position from 1 to 9: ";
+        cout<<"Enter position from 1 to "<<game.pegs.size();
         in>>position;
     }
 
