@@ -16,6 +16,13 @@ using std::unique_ptr; using std::make_unique;
 
 int main() 
 {
+	Circle* ptr_circle = nullptr;//declare a pointer
+
+	Circle circle0;
+	ptr_circle = &circle0;
+	ptr_circle->draw();//dereferencing the pointer( using * behind the scenes)
+	std::cout<<"First circle example ends\n\n";
+
 	unique_ptr<Shape> circle = make_unique<Circle>();
 	circle->draw();
 
