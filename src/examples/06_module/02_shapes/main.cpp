@@ -16,6 +16,41 @@ using std::unique_ptr; using std::make_unique;
 
 int main() 
 {
+	const int SIZE = 3;
+	Circle circles[SIZE];
+
+	circles[0].draw();
+	circles[1].draw();
+	circles[2].draw();
+	
+	//dynamic memory - Circle is not a pointer
+	Shape* shapes = new Circle[SIZE];
+	shapes[0].draw();
+	shapes[1].draw();
+	shapes[2].draw();
+
+	delete[] shapes;
+	shapes = nullptr;
+
+	Shape** shapes1 = new Shape*[SIZE];
+	shapes1[0] = new Circle();
+	shapes1[1] = new Line();
+	shapes1[2] = new Line();
+
+	shapes1[0]->draw();
+	shapes1[1]->draw();
+	shapes1[2]->draw();
+
+	for(int i=0; i < SIZE; ++i)
+	{
+		delete shapes1[i];
+	}
+
+	delete[] shapes1;
+	shapes1 = nullptr;
+
+	/*
+	
 	Circle* ptr_circle = nullptr;//declare a pointer
 
 	Circle circle0;
@@ -37,7 +72,7 @@ int main()
 	{   
 		shape->draw();
 	}
-
+*/
 
 	return 0;
 }
